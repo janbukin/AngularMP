@@ -14,7 +14,10 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
+import { HomeComponent } from './pages/home';
+import { LoginComponent } from './pages/login';
+import { CoursesComponent } from './pages/courses';
+import { CourseComponent } from './pages/courses/course';
 import { NoContentComponent } from './no-content';
 
 // Application wide providers
@@ -37,6 +40,9 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
+    CoursesComponent,
+    CourseComponent,
     NoContentComponent,
   ],
   /**

@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../app.service';
+import { AppState } from '../../app.service';
 
 @Component({
   selector: 'home',  // <home></home>
