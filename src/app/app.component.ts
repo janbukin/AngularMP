@@ -7,6 +7,9 @@ import { AppState } from './app.service';
   encapsulation: ViewEncapsulation.None,
   styleUrls: [],
   template: `
+    <header>
+    </header>
+
     <main>
       <router-outlet></router-outlet>
     </main>

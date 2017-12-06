@@ -52,6 +52,9 @@ type StoreType = {
     CoursesComponent,
     CourseComponent,
     NoContentComponent,
+    LogoComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   /**
    * Import Angular's modules.
