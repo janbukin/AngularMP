@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../shared-models/course.model';
-import { CourseService } from '../../shared-services/courses/course.service';
+import { CourseService } from '../../shared-services/';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -8,17 +8,19 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: './courses.component.html'
   })
   export class CoursesComponent implements OnInit {
-    private courses: Observable<Course[]>;
+    //private courses: Observable<Course[]>;
+    private staticCourses: Course[];
     private isLoading: boolean = false;
 
     constructor(private courseService: CourseService) {
-      this.courses = new Observable<Course[]>();
+      //this.courses = new Observable<Course[]>();
+      this.staticCourses = [];
     }
 
     public ngOnInit() {
       this.isLoading = true;
-
-      this.courses = Observable.of(this.courseService.get()).map((o: any) => o);
+      //this.courses = Observable.of(this.courseService.get()).map((o: any) => o);
+      this.staticCourses = this.courseService.get();
       this.isLoading = false;
     }
   }

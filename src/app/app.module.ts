@@ -25,7 +25,8 @@ import { NoContentComponent } from './no-content';
 // Shared-components
 import { HeaderComponent, FooterComponent, LogoComponent } from './shared-components';
 
-import { CourseService } from './shared-services/courses';
+// Services
+import { CourseService } from './shared-services';
 
 // Application wide providers
 const APP_PROVIDERS = [

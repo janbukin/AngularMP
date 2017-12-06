@@ -4,4 +4,11 @@ import { Component } from '@angular/core';
     selector: 'footer',
     templateUrl: './footer.component.html'
   })
-  export class FooterComponent { }
+  export class FooterComponent {
+    private year: number;
+
+    constructor() {
+      let date = new Date();
+      this.year = date.getFullYear();
+    }
+  }
