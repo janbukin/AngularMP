@@ -4,13 +4,20 @@ import { CommonModule } from '@angular/common';
 
 import { routes } from './courses.routes';
 
-import { CoursesComponent } from './courses.component';
-import { CourseTileComponent } from './course-tile.component';
+import { CourseTileComponent } from './course-tile/course-tile.component';
 
 @NgModule({
-
+    declarations: [
+        CourseTileComponent
+    ],
+    imports: [
+        routes,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule
+    ]
 })
 
 export class CoursesModule {
-    constructor(){}
+
 }

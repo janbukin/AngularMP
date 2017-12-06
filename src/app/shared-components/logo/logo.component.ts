@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'courses',
-    templateUrl: './courses.component.html'
+    selector: 'logo',
+    templateUrl: './logo.component.html'
   })
-  export class CoursesComponent { }
+  export class LogoComponent { }

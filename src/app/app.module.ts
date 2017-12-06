@@ -14,16 +14,24 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+
+// Pages
 import { HomeComponent } from './pages/home';
 import { LoginComponent } from './pages/login';
-import { CoursesComponent } from './pages/courses';
+import { CoursesComponent, CoursesModule } from './pages/courses';
 import { CourseComponent } from './pages/courses/course';
 import { NoContentComponent } from './no-content';
+
+// Shared-components
+import { HeaderComponent, FooterComponent, LogoComponent } from './shared-components';
+
+import { CourseService } from './shared-services/courses';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  CourseService
 ];
 
 type StoreType = {
@@ -57,6 +65,7 @@ type StoreType = {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
+    CoursesModule,
 
     ...environment.showDevModule ? [] : [],
   ],
