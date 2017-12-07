@@ -18,8 +18,7 @@ import { AppState, InternalStateType } from './app.service';
 // Pages
 import { HomeComponent } from './pages/home';
 import { LoginComponent } from './pages/login';
-import { CoursesComponent, CoursesModule } from './pages/courses';
-import { CourseComponent } from './pages/courses/course';
+import { CoursesModule } from './pages/courses';
 import { NoContentComponent } from './no-content';
 
 // Shared-components
@@ -28,7 +27,6 @@ import {
   FooterComponent,
   LogoComponent,
   LoginStatusComponent,
-  ToolboxComponent
 } from './shared-components';
 
 // Services
@@ -56,12 +54,9 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CoursesComponent,
-    CourseComponent,
     NoContentComponent,
     LogoComponent,
     LoginStatusComponent,
-    ToolboxComponent,
     HeaderComponent,
     FooterComponent
   ],

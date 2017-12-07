@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../../shared-models/course.model';
 import { CourseService } from '../../shared-services/';
 import { Observable } from 'rxjs/Observable';
-import { CourseTileComponent } from './course-tile/course-tile.component';
 
 @Component({
     selector: 'courses',
