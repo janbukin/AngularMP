@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../../shared-models/course.model';
 import { CourseService } from '../../shared-services/';
 import { Observable } from 'rxjs/Observable';
+import { CourseTileComponent } from './course-tile/course-tile.component';
 
 @Component({
     selector: 'courses',
@@ -22,5 +23,9 @@ import { Observable } from 'rxjs/Observable';
       //this.courses = Observable.of(this.courseService.get()).map((o: any) => o);
       this.staticCourses = this.courseService.get();
       this.isLoading = false;
+    }
+
+    public delete(id: number) {
+      console.log(id + ' is deleted');
     }
   }

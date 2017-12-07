@@ -23,7 +23,13 @@ import { CourseComponent } from './pages/courses/course';
 import { NoContentComponent } from './no-content';
 
 // Shared-components
-import { HeaderComponent, FooterComponent, LogoComponent } from './shared-components';
+import {
+  HeaderComponent,
+  FooterComponent,
+  LogoComponent,
+  LoginStatusComponent,
+  ToolboxComponent
+} from './shared-components';
 
 // Services
 import { CourseService } from './shared-services';
@@ -54,6 +60,8 @@ type StoreType = {
     CourseComponent,
     NoContentComponent,
     LogoComponent,
+    LoginStatusComponent,
+    ToolboxComponent,
     HeaderComponent,
     FooterComponent
   ],

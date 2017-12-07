@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
     selector: 'logo',
     templateUrl: './logo.component.html'
   })
-  export class LogoComponent { }
+  export class LogoComponent {
+    public path = 'assets/img/logo.png';
+  }
