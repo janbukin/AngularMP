@@ -5,7 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'courses',
-    templateUrl: './courses.component.html'
+    templateUrl: './courses.component.html',
+    styleUrls: [ './courses.styles.scss' ]
   })
   export class CoursesComponent implements OnInit {
     //private courses: Observable<Course[]>;

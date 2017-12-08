@@ -7,7 +7,8 @@ import { AppState } from '../../app.service';
 
 @Component({
   selector: 'home',  // <home></home>
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: [ './home.styles.scss' ]
 })
 export class HomeComponent implements OnInit {
 
