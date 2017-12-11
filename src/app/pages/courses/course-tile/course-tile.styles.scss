@@ -1,0 +1,25 @@
+@import '../../../../styles/main';
+
+.course-tile {
+    @include general-block();
+    
+        &__content {
+    
+        }
+    
+        &__header {
+    
+        }
+    
+        &__title {
+    
+        }
+    
+        &__body {
+    
+        }
+    
+        &__toolbox {
+            
+        }
+    }

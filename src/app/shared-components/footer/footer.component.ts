@@ -1,7 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'courses',
-    templateUrl: './courses.component.html'
+    selector: 'footer',
+    templateUrl: './footer.component.html',
+    styleUrls: [ './footer.styles.scss' ]
   })
-  export class CoursesComponent { }
+  export class FooterComponent {
+    private year: number;
+
+    constructor() {
+      let date = new Date();
+      this.year = date.getFullYear();
+    }
+  }

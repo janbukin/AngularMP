@@ -14,16 +14,29 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+
+// Pages
 import { HomeComponent } from './pages/home';
 import { LoginComponent } from './pages/login';
-import { CoursesComponent } from './pages/courses';
-import { CourseComponent } from './pages/courses/course';
+import { CoursesModule } from './pages/courses';
 import { NoContentComponent } from './no-content';
+
+// Shared-components
+import {
+  HeaderComponent,
+  FooterComponent,
+  LogoComponent,
+  LoginStatusComponent,
+} from './shared-components';
+
+// Services
+import { CourseService } from './shared-services';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  CourseService
 ];
 
 type StoreType = {
@@ -41,9 +54,11 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CoursesComponent,
-    CourseComponent,
     NoContentComponent,
+    LogoComponent,
+    LoginStatusComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   /**
    * Import Angular's modules.
@@ -57,6 +72,7 @@ type StoreType = {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
+    CoursesModule,
 
     ...environment.showDevModule ? [] : [],
   ],

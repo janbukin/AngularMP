@@ -1,0 +1,9 @@
+@import '../../../styles/main';
+
+.header {
+  @include general-block();
+  
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  }

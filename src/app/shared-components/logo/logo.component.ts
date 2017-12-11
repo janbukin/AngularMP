@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'courses',
-    templateUrl: './courses.component.html'
+    selector: 'logo',
+    templateUrl: './logo.component.html',
+    styleUrls: [ './logo.styles.scss' ]
   })
-  export class CoursesComponent { }
+  export class LogoComponent {
+    public path = 'assets/img/logo.png';
+  }

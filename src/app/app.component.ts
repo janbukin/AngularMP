@@ -5,8 +5,13 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [],
+  styleUrls: [
+    //require('../styles/main.scss')
+  ],
   template: `
+    <header>
+    </header>
+
     <main>
       <router-outlet></router-outlet>
     </main>
