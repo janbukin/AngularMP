@@ -1,4 +1,7 @@
+@import '../../../../styles/main';
+
 .course-tile {
+    @include general-block();
     
         &__content {
     

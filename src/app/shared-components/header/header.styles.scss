@@ -1,4 +1,9 @@
+@import '../../../styles/main';
+
 .header {
-    min-width: 200px;
-    border: 1px;
+  @include general-block();
+  
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
   }
