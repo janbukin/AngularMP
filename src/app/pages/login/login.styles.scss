@@ -1,17 +1,8 @@
 .login {
     margin: 10px;
     padding: 10px;
-    position: fixed;
-    width: 340 px;
-    height: 280px;
+    min-height: 200px;
     
-    //top: 50%;
-    //left: 50%;
-    //margin-top: -100px;
-    //margin-left: -200px;
-
-    //text-align: center;
-
     label {
         display: inline-block;
     }

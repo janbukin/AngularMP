@@ -10,7 +10,7 @@ import { AppState } from './app.service';
     <header>
     </header>
 
-    <main>
+    <main class="page__content">
       <router-outlet></router-outlet>
     </main>
 

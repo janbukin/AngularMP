@@ -1,5 +1,33 @@
 html, body {
-    margin: 0px;
-    padding: 0px;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.page {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    z-index: 1;
+
+    &__header {
+        flex: none;
+    }
+
+    &__content {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+    }
+
+    &__footer{
+        -webkit-box-flex: 0;
+        -ms-flex: none;
+        flex: none;
+    }
 }
