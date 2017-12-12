@@ -16,6 +16,6 @@ export class AuthorizationService {
     }
 
     public getUserInfo(): string {
-        return 'test';
+        return 'User login';
     }
 }
