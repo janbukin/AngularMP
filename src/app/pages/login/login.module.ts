@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './login.component';
 
@@ -8,7 +8,7 @@ import { LoginComponent } from './login.component';
         LoginComponent
     ],
     imports: [
-        BrowserModule
+        CommonModule
     ]
 })
 

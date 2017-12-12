@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { routes } from './courses.routes';
 
@@ -13,7 +13,7 @@ import { ToolboxModule } from '../../shared-components';
         CourseTileComponent
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
         routes,
         ToolboxModule
     ]
