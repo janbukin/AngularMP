@@ -9,23 +9,26 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: [ './courses.styles.scss' ]
   })
   export class CoursesComponent implements OnInit {
-    //private courses: Observable<Course[]>;
-    private staticCourses: Course[];
+    private courses: Course[];
     private isLoading: boolean = false;
 
     constructor(private courseService: CourseService) {
-      //this.courses = new Observable<Course[]>();
-      this.staticCourses = [];
+      this.courses = [];
     }
 
     public ngOnInit() {
       this.isLoading = true;
-      //this.courses = Observable.of(this.courseService.get()).map((o: any) => o);
-      this.staticCourses = this.courseService.get();
+      this.load();
       this.isLoading = false;
     }
 
-    public delete(id: number) {
-      console.log(id + ' is deleted');
+    public load(): void {
+      this.courses = this.courseService.getAll();
+    }
+
+    public delete(id: number): void {
+      if (confirm('Do you really want to delete this course?')) {
+        console.log(id + ' is deleted');
+      }
     }
   }

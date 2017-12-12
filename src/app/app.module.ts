@@ -17,25 +17,26 @@ import { AppState, InternalStateType } from './app.service';
 
 // Pages
 import { HomeComponent } from './pages/home';
-import { LoginComponent } from './pages/login';
-import { CoursesModule } from './pages/courses';
 import { NoContentComponent } from './no-content';
+import { LoginModule } from './pages/login';
+import { CoursesModule } from './pages/courses';
 
 // Shared-components
 import {
   HeaderComponent,
   FooterComponent,
   LogoComponent,
-  LoginStatusComponent,
 } from './shared-components';
 
 // Services
+import { AuthorizationService } from './shared-services';
 import { CourseService } from './shared-services';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
+  AuthorizationService,
   CourseService
 ];
 
@@ -53,10 +54,8 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     NoContentComponent,
     LogoComponent,
-    LoginStatusComponent,
     HeaderComponent,
     FooterComponent
   ],
@@ -73,6 +72,7 @@ type StoreType = {
       preloadingStrategy: PreloadAllModules
     }),
     CoursesModule,
+    LoginModule,
 
     ...environment.showDevModule ? [] : [],
   ],

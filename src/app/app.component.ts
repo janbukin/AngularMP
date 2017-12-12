@@ -6,7 +6,7 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    //require('../styles/main.scss')
+    //'../styles/main.scss'
   ],
   template: `
     <header>

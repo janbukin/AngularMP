@@ -17,8 +17,34 @@ export class CourseService {
      ];
     }
 
-    public get(): Course[] {
-        //return Observable.of(this.courses).map((o: any) => o);
+    public getAll(): Course[] {
         return this.courses;
+    }
+
+    public getById(id: number): Course {
+        return this.courses.find((x: Course) => x.id === id);
+    }
+
+    public create(course: Course): Course {
+        this.courses.push(course);
+        return course;
+    }
+
+    public update(course: Course): Course {
+        let oldCourse = this.getById(course.id);
+        let index = this.courses.indexOf(oldCourse, 0);
+        if (index > -1) {
+            this.courses.splice(index, 1, course);
+        }
+        return course;
+    }
+
+    public delete(id: number): boolean {
+        let course = this.getById(id);
+        let index = this.courses.indexOf(course, 0);
+        if (index > -1) {
+            this.courses.splice(index, 1);
+        }
+        return true;
     }
 }

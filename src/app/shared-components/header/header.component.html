@@ -1,4 +1,14 @@
 <div class="header">
     <logo></logo>
-    <login-status></login-status>
+    <div *ngIf="isAuthenticated()">
+        <div class="login-status">
+            <div>{{userName}}</div>
+            <div><a href="#" (click)="logout()">Logoff</a></div>
+        </div>
+    </div>
+    <div *ngIf="!isAuthenticated()">
+            <div class="login-status">
+                <div><a href="#">Log in</a></div>
+            </div>
+        </div>
 </div>
