@@ -12,7 +12,8 @@ import { ToolboxComponent } from './toolbox.component';
         FormsModule,
         ReactiveFormsModule,
         CommonModule
-    ]
+    ],
+    exports: [ToolboxComponent]
 })
 
 export class ToolboxModule {
