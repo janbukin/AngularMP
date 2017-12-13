@@ -10,11 +10,11 @@ export class CourseService {
 
     constructor(private http: Http) {
         this.courses = [
-            new Course(1, 'Video course 1', 88, new Date(), 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'),
-            new Course(2, 'Video course 2', 15, new Date(), 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'),
-            new Course(3, 'Video course 3', 135, new Date(), 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'),
-            new Course(4, 'Video course 4', 45, new Date(), 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'),
-     ];
+            {id: 1, title: 'Video course 1', duration: 88, date: new Date(), description: 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'},
+            {id: 2, title: 'Video course 2', duration: 15, date: new Date(), description: 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'},
+            {id: 3, title: 'Video course 3', duration: 135, date: new Date(), description: 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'},
+            {id: 4, title: 'Video course 4', duration: 45, date: new Date(), description: 'With this, any object which implements the MyInterface will need to implement all function calls of arrays and only will be able to store objects with the MyType type.'}
+        ];
     }
 
     public getAll(): Course[] {
