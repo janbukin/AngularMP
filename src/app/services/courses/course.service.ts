@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Response, Request, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
-import { Course } from '../../shared-models/course.model';
+import { Course } from '../../shared/models/course.model';
 
 @Injectable()
 export class CourseService {

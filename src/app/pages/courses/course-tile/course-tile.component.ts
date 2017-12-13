@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Course } from '../../../shared-models/course.model';
+import { Course } from 'app/shared/models/course.model';
 
 @Component({
     selector: 'course-tile',

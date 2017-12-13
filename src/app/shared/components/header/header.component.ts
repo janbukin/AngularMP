@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthorizationService } from 'app/shared-services/authorization/authorization.service';
+import { AuthorizationService } from 'app/shared/services/authorization/authorization.service';
 
 @Component({
     selector: 'header',

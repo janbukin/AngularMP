@@ -21,23 +21,21 @@ import { NoContentComponent } from './no-content';
 import { LoginModule } from './pages/login';
 import { CoursesModule } from './pages/courses';
 
-// Shared-components
+// Shared components
 import {
   HeaderComponent,
   FooterComponent,
   LogoComponent,
-} from './shared-components';
+} from './shared/components';
 
 // Services
-import { AuthorizationService } from './shared-services';
-import { CourseService } from './shared-services';
+import { AuthorizationService } from './shared/services';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  AuthorizationService,
-  CourseService
+  AuthorizationService
 ];
 
 type StoreType = {

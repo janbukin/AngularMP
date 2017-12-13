@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { AuthorizationService } from 'app/shared-services';
+import { AuthorizationService } from 'app/shared/services';
 
 @Component({
     selector: 'login',
