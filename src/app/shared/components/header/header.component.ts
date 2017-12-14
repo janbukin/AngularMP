@@ -8,21 +8,16 @@ import { AuthorizationService } from 'app/shared/services/authorization/authoriz
   })
 
   export class HeaderComponent {
-    private userName: string;
+    public userName?: string;
+    public isAuthenticated: boolean;
 
     constructor(private authorizationService: AuthorizationService) {
-      if (this.isAuthenticated()) {
-        this.userName = this.getUserInfo();
-      }
+      this.isAuthenticated = this.authorizationService.isAuthenticated();
+      this.userName = this.authorizationService.getUserInfo();
     }
 
     public logout(): void {
       this.authorizationService.logout();
-      console.log('Logged out');
-    }
-
-    public isAuthenticated(): boolean {
-      return this.authorizationService.isAuthenticated();
     }
 
     public getUserInfo(): string {

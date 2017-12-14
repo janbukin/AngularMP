@@ -8,14 +8,17 @@ import { AuthorizationService } from 'app/shared/services';
     styleUrls: [ './login.styles.scss' ]
   })
   export class LoginComponent {
-    @Input() public loginName: string;
-    @Input() public password: string;
+    @Input() public userName?: string;
+    @Input() public password?: string;
 
     constructor(private authorizationService: AuthorizationService) { }
 
     public login(): void {
-      this.authorizationService.login();
-      console.log('Logged in');
+      if (!this.userName) {
+        return;
+      }
+
+      this.authorizationService.login(this.userName);
     }
 
   }
