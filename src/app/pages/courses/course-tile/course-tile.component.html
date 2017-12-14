@@ -3,14 +3,14 @@
         <div class="course-tile__header">
             <div>
                 <span class="course-tile__title">{{course.title}}</span>
-                <span>{{course.duration}} min</span>
+                <span class="course-tile__duration">{{course.duration}} min</span>
             </div>
             <div>{{course.date}}</div>
         </div>
         <div class="course-tile__body">{{course.description}}</div>
     </div>
     <div class="course-tile__toolbox">
-        <button type="button">Edit course</button>
-        <button type="button" (click)="delete(course.id)">Delete</button>
+        <button class="button-toolbox" type="button" (click)="edit(course.id)">Edit course</button>
+        <button class="button-toolbox" type="button" (click)="onDelete()">Delete</button>
     </div>
 </div>

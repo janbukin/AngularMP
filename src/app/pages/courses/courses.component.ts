@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { CourseService } from 'app/services';
@@ -27,7 +27,7 @@ import { Course } from 'app/shared/models/course.model';
       this.courses = this.courseService.getAll();
     }
 
-    public delete(id: number): void {
+    public onDelete(id: number): void {
       if (confirm('Do you really want to delete this course?')) {
         console.log(id + ' is deleted');
       }

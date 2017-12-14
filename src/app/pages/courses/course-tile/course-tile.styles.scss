@@ -2,24 +2,34 @@
 
 .course-tile {
     @include general-block();
-    
-        &__content {
-    
-        }
-    
-        &__header {
-    
-        }
-    
-        &__title {
-    
-        }
-    
-        &__body {
-    
-        }
-    
-        &__toolbox {
-            
-        }
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px 20px 10px;
+
+    &__content {
+        padding-right: 10px;    
     }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 14pt;
+    }
+
+    &__duration {
+        padding-left: 10px;
+    }
+
+    &__body {
+        padding-top: 10px;
+        line-height: 1.7em;
+    }
+
+    &__toolbox {
+        width: 200px;
+        text-align: center;
+    }
+}

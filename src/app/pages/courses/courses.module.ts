@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { routes } from './courses.routes';
 import { CoursesComponent } from './courses.component';
@@ -14,6 +15,7 @@ import { CourseService } from 'app/services';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         routes,
         ToolboxModule
     ],

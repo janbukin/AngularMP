@@ -1,5 +1,32 @@
 html, body {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+button{
+    font-size: 10pt;
+    font-weight: 300;
+    text-transform: uppercase;
+    height: 40px;
+    width: 150px;
+    border-radius: 0;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: whitesmoke;
+}
+
+.button-toolbox {
+    height: 30px;
+}
+
+input[type=text],
+input[type=password] {
+    padding-left: 10px;
+    margin: 10px;
+    width: 290px;
+    height: 30px;
+    font-size: 10pt;
 }
 
 .page {
