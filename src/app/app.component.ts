@@ -7,14 +7,14 @@ import { AppState } from './app.service';
   encapsulation: ViewEncapsulation.None,
   styleUrls: [ './app.styles.scss' ],
   template: `
-    <header>
+    <header class="page__header">
     </header>
 
     <main class="page__content">
       <router-outlet></router-outlet>
     </main>
 
-    <footer>
+    <footer class="page__footer">
     </footer>
   `
 })
