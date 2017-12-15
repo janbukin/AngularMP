@@ -4,7 +4,8 @@
     min-height: 200px;
     text-align: center;
     
-    label {
+    &__label {
         display: inline-block;
+        width: 100px;
     }
 }
