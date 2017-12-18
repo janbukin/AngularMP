@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthorizationService } from 'app/shared/services/authorization/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'header',
@@ -11,8 +12,13 @@ import { AuthorizationService } from 'app/shared/services/authorization/authoriz
     public userName?: string;
     public isAuthenticated: boolean;
 
-    constructor(private authorizationService: AuthorizationService) {
+    constructor(private authorizationService: AuthorizationService, private router: Router) {
       this.isAuthenticated = this.authorizationService.isAuthenticated();
+
+      if (!this.isAuthenticated) {
+        this.router.navigate(['/login']);
+      }
+
       this.userName = this.authorizationService.getUserInfo();
     }
 

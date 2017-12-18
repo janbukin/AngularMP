@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { AuthorizationService } from 'app/shared/services';
 
 @Component({
@@ -11,7 +11,8 @@ import { AuthorizationService } from 'app/shared/services';
     @Input() public userName?: string;
     @Input() public password?: string;
 
-    constructor(private authorizationService: AuthorizationService) { }
+    constructor(
+      private authorizationService: AuthorizationService, private router: Router) { }
 
     public login(): void {
       if (!this.userName) {
@@ -19,6 +20,7 @@ import { AuthorizationService } from 'app/shared/services';
       }
 
       this.authorizationService.login(this.userName);
+      this.router.navigate(['']);
     }
 
   }
