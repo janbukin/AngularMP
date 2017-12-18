@@ -1,15 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Course } from '../../../shared-models/course.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Course } from 'app/shared/models/course.model';
 
 @Component({
     selector: 'course-tile',
     templateUrl: './course-tile.component.html',
     styleUrls: [ './course-tile.styles.scss' ]
   })
-  export class CourseTileComponent implements OnInit {
+  export class CourseTileComponent{
     @Input() public course: Course;
+    @Output() public delete: EventEmitter<number> = new EventEmitter<number>();
 
-    constructor() { }
+    public onDelete() {
+        this.delete.emit(this.course.id);
+      }
 
-    public ngOnInit() { }
+    public edit(): void {
+        console.log(this.course.id + ' will be edited');
+    }
   }

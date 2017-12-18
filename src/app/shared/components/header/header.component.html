@@ -1,0 +1,9 @@
+<div class="header">
+    <logo></logo>
+    <div *ngIf="isAuthenticated">
+        <div class="login-status">
+            <div>{{userName}}</div>
+            <div><a href="" (click)="logout()">Logoff</a></div>
+        </div>
+    </div>
+</div>

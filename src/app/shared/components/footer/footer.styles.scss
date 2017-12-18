@@ -1,0 +1,8 @@
+@import '../../../../styles/main';
+
+.footer {
+    @include general-block();
+    
+    display: flex;
+    justify-content: center;
+    }
