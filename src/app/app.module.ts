@@ -21,7 +21,7 @@ import { NoContentComponent } from './no-content';
 import { LoginModule } from './pages/login';
 import { CoursesModule } from './pages/courses';
 
-// Shared components
+// Components
 import {
   HeaderComponent,
   FooterComponent,
@@ -30,6 +30,9 @@ import {
 
 // Services
 import { AuthorizationService } from './shared/services';
+
+// Directives
+import { BorderHighlightDirective } from './shared/directives';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -55,7 +58,8 @@ type StoreType = {
     NoContentComponent,
     LogoComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BorderHighlightDirective
   ],
   /**
    * Import Angular's modules.
@@ -80,6 +84,7 @@ type StoreType = {
   providers: [
     environment.ENV_PROVIDERS,
     APP_PROVIDERS
-  ]
+  ],
+  exports: [BorderHighlightDirective]
 })
 export class AppModule {}
