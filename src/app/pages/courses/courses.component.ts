@@ -17,7 +17,6 @@ import { OrderByPipe, SearchPipe } from './pipes';
     private isLoading: boolean = false;
 
     constructor(private courseService: CourseService, private searchPipe: SearchPipe) {}
-    //constructor(private courseService: CourseService) {}
 
     public ngOnInit() {
       this.isLoading = true;
@@ -38,8 +37,5 @@ import { OrderByPipe, SearchPipe } from './pipes';
 
     public onSearch(query: string): void {
       this.filteredCourses = this.searchPipe.transform(this.courses, query);
-      console.log(query);
-      console.log(this.courses);
-      console.log(this.filteredCourses);
     }
   }
