@@ -1,21 +1,22 @@
-import { Directive, ElementRef, Input, Renderer } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
     selector: '[borderHighlight]'
 })
 
-export class BorderHighlightDirective {
+export class BorderHighlightDirective implements OnInit {
     @Input() public createdDate: Date;
 
-    constructor(el: ElementRef, renderer: Renderer) {
-        let currentDate = new Date();
+    constructor(private el: ElementRef) {}
 
+    public ngOnInit() {
+        let currentDate = new Date();
         if (this.createdDate < currentDate &&
             this.createdDate.getDate() >= currentDate.getDate() - 14) {
-            el.nativeElement.style.borderColor = 'green';
-        //renderer.setElementStyle(el.nativeElement, 'borderColor', 'blue');
-        } else if (this.createdDate > currentDate) {
-            el.nativeElement.style.borderColor = 'blue';
+            this.el.nativeElement.style.borderColor = 'lightseagreen';
+        }
+        if (this.createdDate > currentDate) {
+            this.el.nativeElement.style.borderColor = 'lightblue';
         }
     }
 }

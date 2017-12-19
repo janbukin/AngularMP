@@ -1,4 +1,5 @@
-<div class="course-tile" borderHighlight>
+<div class="course-tile" borderHighlight [createdDate]="course.createdDate" 
+[ngClass]="{'course-tile__top-rated': course.topRated}">
     <div class="course-tile__content">
         <div class="course-tile__header">
             <div>

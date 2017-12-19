@@ -7,6 +7,7 @@ import { CoursesComponent } from './courses.component';
 import { CourseTileComponent } from './course-tile';
 import { ToolboxModule } from 'app/shared/components';
 import { CourseService } from 'app/services';
+import { SharedModule } from 'app/shared/modules';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { CourseService } from 'app/services';
         CommonModule,
         FormsModule,
         routes,
-        ToolboxModule
+        ToolboxModule,
+        SharedModule
     ],
     providers: [CourseService]
 })

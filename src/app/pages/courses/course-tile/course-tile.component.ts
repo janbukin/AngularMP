@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from 'app/shared/models/course.model';
-import { BorderHighlightDirective } from 'app/shared/directives';
 
 @Component({
     selector: 'course-tile',

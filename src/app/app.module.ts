@@ -31,9 +31,6 @@ import {
 // Services
 import { AuthorizationService } from './shared/services';
 
-// Directives
-import { BorderHighlightDirective } from './shared/directives';
-
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -58,8 +55,7 @@ type StoreType = {
     NoContentComponent,
     LogoComponent,
     HeaderComponent,
-    FooterComponent,
-    BorderHighlightDirective
+    FooterComponent
   ],
   /**
    * Import Angular's modules.
@@ -84,7 +80,6 @@ type StoreType = {
   providers: [
     environment.ENV_PROVIDERS,
     APP_PROVIDERS
-  ],
-  exports: [BorderHighlightDirective]
+  ]
 })
 export class AppModule {}
