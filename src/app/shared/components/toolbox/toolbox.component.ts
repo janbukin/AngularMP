@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Course } from 'app/shared/models/course.model';
 
 @Component({
     selector: 'toolbox',
@@ -6,9 +7,9 @@ import { Component, Input } from '@angular/core';
     styleUrls: [ './toolbox.styles.scss' ]
   })
   export class ToolboxComponent {
-    @Input() public query: string;
+    @Output() public search: EventEmitter<string> = new EventEmitter<string>();
 
-    public find() {
-      console.log(this.query);
+    public onSearch(query: string) {
+      this.search.emit(query);
     }
   }

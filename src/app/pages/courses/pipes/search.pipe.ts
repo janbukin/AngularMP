@@ -10,7 +10,10 @@ export class SearchPipe implements PipeTransform {
         if (!query) {
             return courses;
         }
+        let lowerCaseQuery = query.toLowerCase();
 
-        return courses.filter((course: Course) => course.title.indexOf(query) !== -1);
+        return courses.filter((course: Course) =>
+            course.title.toLowerCase().indexOf(lowerCaseQuery) !== -1
+        );
     }
 }

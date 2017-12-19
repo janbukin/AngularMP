@@ -1,7 +1,7 @@
-<toolbox></toolbox>
+<toolbox (search)="onSearch($event)"></toolbox>
 <div class="courses">
     <div class="courses__list" *ngIf="courses">
-        <course-tile *ngFor="let course of courses | orderByDate:'desc'" [course]="course" (delete)='onDelete($event)'></course-tile>
+        <course-tile *ngFor="let course of filteredCourses | orderByDate:'desc'" [course]="course" (delete)='onDelete($event)'></course-tile>
     </div>
     <div class="courses__empty-list" *ngIf="!courses">
         No data. Feel free to add new course.
