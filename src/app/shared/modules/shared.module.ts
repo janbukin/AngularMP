@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { BorderHighlightDirective } from '../../shared/directives';
+import { BorderHighlightDirective } from 'app/shared/directives';
+import { DurationPipe } from 'app/shared/pipes';
 
 @NgModule({
-    declarations: [ BorderHighlightDirective ],
-    exports: [ BorderHighlightDirective ]
+    declarations: [ BorderHighlightDirective, DurationPipe ],
+    exports: [ BorderHighlightDirective, DurationPipe ]
 })
 export class SharedModule {}

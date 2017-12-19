@@ -4,7 +4,7 @@
         <div class="course-tile__header">
             <div>
                 <span class="course-tile__title">{{course.title | uppercase}}</span>
-                <span class="course-tile__duration">{{course.duration}} min</span>
+                <span class="course-tile__duration">{{course.duration | durationHm}} </span>
                 <span *ngIf="course.topRated"> &#9734; </span>
             </div>
             <div>{{course.createdDate | date:'mediumDate'}}</div>

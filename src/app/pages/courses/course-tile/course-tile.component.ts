@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from 'app/shared/models/course.model';
+import { DurationPipe } from 'app/shared/pipes';
 
 @Component({
     selector: 'course-tile',
