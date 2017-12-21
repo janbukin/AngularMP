@@ -1,6 +1,14 @@
+@import '../../../styles/main';
+
 .courses {
     
         &__list {
     
+        }
+
+        &__empty-list {
+            @include general-block();
+
+            padding: 20px 10px 20px 10px;
         }
     }

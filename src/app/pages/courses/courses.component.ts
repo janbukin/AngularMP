@@ -3,19 +3,21 @@ import { Observable } from 'rxjs/Observable';
 
 import { CourseService } from 'app/services';
 import { Course } from 'app/shared/models/course.model';
+import { SearchPipe } from './pipes';
+import { OrderByPipe } from 'app/shared/pipes';
 
 @Component({
     selector: 'courses',
     templateUrl: './courses.component.html',
-    styleUrls: [ './courses.styles.scss' ]
+    styleUrls: [ './courses.styles.scss' ],
+    providers: [ SearchPipe ]
   })
   export class CoursesComponent implements OnInit {
-    private courses: Course[];
+    private courses: Course[] = [];
+    private filteredCourses: Course[];
     private isLoading: boolean = false;
 
-    constructor(private courseService: CourseService) {
-      this.courses = [];
-    }
+    constructor(private courseService: CourseService, private searchPipe: SearchPipe) {}
 
     public ngOnInit() {
       this.isLoading = true;
@@ -25,11 +27,16 @@ import { Course } from 'app/shared/models/course.model';
 
     public load(): void {
       this.courses = this.courseService.getAll();
+      this.filteredCourses = this.courses;
     }
 
     public onDelete(id: number): void {
       if (confirm('Do you really want to delete this course?')) {
         console.log(id + ' is deleted');
       }
+    }
+
+    public onSearch(query: string): void {
+      this.filteredCourses = this.searchPipe.transform(this.courses, query);
     }
   }

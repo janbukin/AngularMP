@@ -1,11 +1,13 @@
-<div class="course-tile">
+<div class="course-tile" borderHighlight [createdDate]="course.createdDate" 
+[ngClass]="{'course-tile__top-rated': course.topRated}">
     <div class="course-tile__content">
         <div class="course-tile__header">
             <div>
-                <span class="course-tile__title">{{course.title}}</span>
-                <span class="course-tile__duration">{{course.duration}} min</span>
+                <span class="course-tile__title">{{course.title | uppercase}}</span>
+                <span class="course-tile__duration">{{course.duration | durationHm}} </span>
+                <span *ngIf="course.topRated"> &#9734; </span>
             </div>
-            <div>{{course.date}}</div>
+            <div>{{course.createdDate | date:'mediumDate'}}</div>
         </div>
         <div class="course-tile__body">{{course.description}}</div>
     </div>

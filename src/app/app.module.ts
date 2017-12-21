@@ -21,7 +21,7 @@ import { NoContentComponent } from './no-content';
 import { LoginModule } from './pages/login';
 import { CoursesModule } from './pages/courses';
 
-// Shared components
+// Components
 import {
   HeaderComponent,
   FooterComponent,

@@ -1,15 +1,17 @@
 @import '../../../../styles/main';
 
 .header {
-  @include general-block();
+  @include general-block();  
   
-  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  }
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
 
-  .login-status {
-    text-align: right;
+.login-status {
+text-align: right;
 
     a {
         color: deepskyblue;
