@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { CourseService } from 'app/services';
 import { Course } from 'app/shared/models/course.model';
-import { OrderByPipe, SearchPipe } from './pipes';
+import { SearchPipe } from './pipes';
+import { OrderByPipe } from 'app/shared/pipes';
 
 @Component({
     selector: 'courses',

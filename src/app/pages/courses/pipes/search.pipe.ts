@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Course } from 'app/shared/models/course.model';
 
 @Pipe({
-    name: 'searchByTitle'
+    name: 'searchByTitle',
+    pure: true
 })
 
 export class SearchPipe implements PipeTransform {

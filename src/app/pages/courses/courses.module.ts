@@ -8,13 +8,12 @@ import { CourseTileComponent } from './course-tile';
 import { ToolboxModule } from 'app/shared/components';
 import { CourseService } from 'app/services';
 import { SharedModule } from 'app/shared/modules';
-import { OrderByPipe, SearchPipe } from 'app/pages/courses/pipes';
+import { SearchPipe } from 'app/pages/courses/pipes';
 
 @NgModule({
     declarations: [
         CoursesComponent,
         CourseTileComponent,
-        OrderByPipe,
         SearchPipe
     ],
     imports: [
