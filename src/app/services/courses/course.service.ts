@@ -43,7 +43,7 @@ export class CourseService {
         let course = this.getById(id);
         let index = this.courses.indexOf(course, 0);
         if (index > -1) {
-            this.courses.splice(index, 1);
+            this.courses = this.courses.splice(index, 1);
         }
         return true;
     }
