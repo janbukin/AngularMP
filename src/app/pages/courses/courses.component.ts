@@ -13,8 +13,8 @@ import { OrderByPipe } from 'app/shared/pipes';
     providers: [ SearchPipe ]
   })
   export class CoursesComponent implements OnInit {
-    private courses: Course[] = [];
-    private filteredCourses: Course[];
+    public courses: Course[] = [];
+    public filteredCourses: Course[];
     private isLoading: boolean = false;
 
     constructor(private courseService: CourseService, private searchPipe: SearchPipe) {}
