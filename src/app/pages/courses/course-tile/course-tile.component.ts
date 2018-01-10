@@ -1,11 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Course } from 'app/shared/models/course.model';
 import { DurationPipe } from 'app/shared/pipes';
 
 @Component({
     selector: 'course-tile',
     templateUrl: './course-tile.component.html',
-    styleUrls: [ './course-tile.styles.scss' ]
+    styleUrls: [ './course-tile.styles.scss' ],
+    changeDetection: ChangeDetectionStrategy.OnPush
   })
   export class CourseTileComponent {
     @Input() public course: Course;

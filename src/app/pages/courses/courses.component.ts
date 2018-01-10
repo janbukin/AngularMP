@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { CourseService } from 'app/services';
@@ -13,8 +13,8 @@ import { OrderByPipe } from 'app/shared/pipes';
     providers: [ SearchPipe ]
   })
   export class CoursesComponent implements OnInit {
-    private courses: Course[] = [];
-    private filteredCourses: Course[];
+    public courses: Course[] = [];
+    public filteredCourses: Course[];
     private isLoading: boolean = false;
 
     constructor(private courseService: CourseService, private searchPipe: SearchPipe) {}
@@ -32,6 +32,12 @@ import { OrderByPipe } from 'app/shared/pipes';
 
     public onDelete(id: number): void {
       if (confirm('Do you really want to delete this course?')) {
+        this.courseService.delete(id);
+
+        let deletedCourse = this.courses.find((x: Course) => x.id === id);
+        this.courses = this.courses.filter((c: Course) => c !== deletedCourse);
+        this.filteredCourses = this.filteredCourses.filter((c: Course) => c !== deletedCourse);
+
         console.log(id + ' is deleted');
       }
     }
