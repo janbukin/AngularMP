@@ -13,7 +13,7 @@ import { OrderByPipe } from 'app/shared/pipes';
     providers: [ SearchPipe ]
   })
   export class CoursesComponent implements OnInit {
-    public courses: Course[] = [];
+    public courses: Course[];
     public filteredCourses: Course[];
     private isLoading: boolean = false;
 
@@ -26,7 +26,11 @@ import { OrderByPipe } from 'app/shared/pipes';
     }
 
     public load(): void {
-      this.courses = this.courseService.getAll();
+      this.courseService.getAll()
+        .subscribe((data) => {
+          this.courses = data;
+        });
+
       this.filteredCourses = this.courses;
     }
 
