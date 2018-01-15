@@ -5,17 +5,17 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 
 export class BorderHighlightDirective implements OnInit {
-    @Input() public createdDate: Date;
+    @Input() public date: Date;
 
     constructor(private el: ElementRef) {}
 
     public ngOnInit() {
         let currentDate = new Date();
-        if (this.createdDate < currentDate &&
-            this.createdDate.getDate() >= currentDate.getDate() - 14) {
+        if (this.date < currentDate &&
+            this.date.getDate() >= currentDate.getDate() - 14) {
             this.el.nativeElement.style.borderColor = 'lightseagreen';
         }
-        if (this.createdDate > currentDate) {
+        if (this.date > currentDate) {
             this.el.nativeElement.style.borderColor = 'lightblue';
         }
     }

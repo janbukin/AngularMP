@@ -1,4 +1,4 @@
-<div class="course-tile" borderHighlight [createdDate]="course.createdDate" 
+<div class="course-tile" borderHighlight [date]="course.date" 
 [ngClass]="{'course-tile__top-rated': course.topRated}">
     <div class="course-tile__content">
         <div class="course-tile__header">
@@ -7,7 +7,7 @@
                 <span class="course-tile__duration">{{course.duration | durationHm}} </span>
                 <span *ngIf="course.topRated"> &#9734; </span>
             </div>
-            <div>{{course.createdDate | date:'mediumDate'}}</div>
+            <div>{{course.date | date:'mediumDate'}}</div>
         </div>
         <div class="course-tile__body">{{course.description}}</div>
     </div>
