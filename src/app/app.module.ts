@@ -20,6 +20,7 @@ import { HomeComponent } from './pages/home';
 import { NoContentComponent } from './no-content';
 import { LoginModule } from './pages/login';
 import { CoursesModule } from './pages/courses';
+import { SaveCourseModule } from './pages/courses/save';
 
 // Components
 import {
@@ -71,6 +72,7 @@ type StoreType = {
     }),
     CoursesModule,
     LoginModule,
+    SaveCourseModule,
 
     ...environment.showDevModule ? [] : [],
   ],
