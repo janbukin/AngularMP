@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Routes } from '@angular/router';
 
 import { routes } from './save-course.routes';
 import { SaveCourseComponent } from './save-course.component';

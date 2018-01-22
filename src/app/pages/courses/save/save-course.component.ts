@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Course } from 'app/shared/models/course.model';
 import { DurationPipe } from 'app/shared/pipes';
 import { CourseService } from 'app/services';
@@ -11,7 +12,7 @@ import { CourseService } from 'app/services';
   export class SaveCourseComponent implements OnInit {
     public course: Course;
 
-    constructor(private courseService: CourseService) {}
+    constructor(private route: ActivatedRoute, private courseService: CourseService) {}
 
     public ngOnInit() {
       this.load();
@@ -21,6 +22,10 @@ import { CourseService } from 'app/services';
       let id = 1;
       this.courseService.getById(id)
         .subscribe((data) => this.course = data);
+
+      // this.route.params
+      //   .switchMap((params: Params) => this.courseService.getById(+params['id']))
+      //   .subscribe((course: Course) => this.course = course);
     }
 
     public save(): void {
