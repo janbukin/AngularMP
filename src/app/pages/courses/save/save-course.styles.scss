@@ -1,0 +1,15 @@
+.course {
+    margin: 10px;
+    padding: 10px;
+    min-height: 200px;
+    
+    &__label {
+        display: inline-block;
+        width: 140px;
+        text-align: right;
+    }
+
+    &__actions {
+        margin: 20px 0 20px 140px;
+    }
+}

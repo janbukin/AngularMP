@@ -19,7 +19,7 @@ import { CourseService } from 'app/services';
     }
 
     public load(): void {
-      let id = 1;
+      let id: number = 1;
       this.courseService.getById(id)
         .subscribe((data) => this.course = data);
 
