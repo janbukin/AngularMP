@@ -21,11 +21,7 @@ export class CourseService {
 
     public getAll(): Observable<Course[]> {
         return this.courses
-            .map((courses: Course[]) => courses
-                .filter((x: Course) => {
-                    return x.date.getDate() > (new Date().getDate() - 14);
-                }
-            ));
+            .map((courses: Course[]) => courses);
     }
 
     public getById(id: number): Observable<Course> {

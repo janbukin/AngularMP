@@ -31,6 +31,9 @@ import { Subject } from 'rxjs/Subject';
       this.courseService.getAll()
         .takeUntil(this.ngUnsubscribe)
         .subscribe((data) => this.courses = data);
+        // .filter((x: Course) => {
+        //     return x.date.getDate() > (new Date().getDate() - 14);
+        // }
 
       this.filteredCourses = this.courses;
     }
