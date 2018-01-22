@@ -30,33 +30,16 @@ import { CourseService } from 'app/services';
     }
 
     public load(id: number): void {
-      this.courseService.getById(id)
-        .subscribe((data) => this.course = data);
-
-      // this.route.params
-      //   .switchMap((params: Params) => this.courseService.getById(+params['id']))
-      //   .subscribe((course: Course) => this.course = course);
+      this.course = this.courseService.getById(id);
     }
 
     public save(): void {
       if (typeof this.course.id === 'undefined' || this.course.id === null) {
-        this.courseService.create(this.course)
-          .subscribe((data) => {
-            this.course = data;
-            console.log('new course is created');
-          });
-
+        this.course = this.courseService.create(this.course);
+        console.log('new course is created');
       } else {
         this.courseService.update(this.course);
       }
-
-      console.log(this.course);
-
-      let courses: Course[];
-      this.courseService.getAll()
-        .subscribe((data) => courses = data);
-
-      console.log(courses);
 
       this.router.navigate(['/courses']);
     }

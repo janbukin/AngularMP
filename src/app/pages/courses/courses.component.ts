@@ -1,11 +1,8 @@
-import { Component, Input, OnInit, Output, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { CourseService } from 'app/services';
 import { Course } from 'app/shared/models/course.model';
 import { SearchPipe } from './pipes';
 import { OrderByPipe } from 'app/shared/pipes';
-import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'courses',
@@ -13,11 +10,10 @@ import { Subject } from 'rxjs/Subject';
     styleUrls: [ './courses.styles.scss' ],
     providers: [ SearchPipe ]
   })
-  export class CoursesComponent implements OnInit, OnDestroy {
+  export class CoursesComponent implements OnInit {
     public courses: Course[];
     public filteredCourses: Course[];
     private isLoading: boolean = false;
-    private ngUnsubscribe: Subject<Course[]> = new Subject();
 
     constructor(private courseService: CourseService, private searchPipe: SearchPipe) {}
 
@@ -28,12 +24,10 @@ import { Subject } from 'rxjs/Subject';
     }
 
     public load(): void {
-      this.courseService.getAll()
-        .takeUntil(this.ngUnsubscribe)
-        .subscribe((data) => this.courses = data);
-        // .filter((x: Course) => {
-        //     return x.date.getDate() > (new Date().getDate() - 14);
-        // }
+      this.courses = this.courseService.getAll();
+      // .filter((x: Course) => {
+      //     return x.date.getDate() > (new Date().getDate() - 14);
+      // });
 
       this.filteredCourses = this.courses;
     }
@@ -52,10 +46,5 @@ import { Subject } from 'rxjs/Subject';
 
     public onSearch(query: string): void {
       this.filteredCourses = this.searchPipe.transform(this.courses, query);
-    }
-
-    public ngOnDestroy() {
-      this.ngUnsubscribe.next();
-      this.ngUnsubscribe.complete();
     }
   }
