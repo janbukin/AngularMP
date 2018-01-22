@@ -7,6 +7,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class DurationPipe implements PipeTransform {
     public transform(duration: number) {
+        if (typeof duration === 'undefined') {
+            return '';
+        }
+
         if (duration < 60) {
             return duration + 'min';
         } else {

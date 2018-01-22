@@ -1,31 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Routes } from '@angular/router';
 
-import { routes } from './courses.routes';
-import { CoursesComponent } from './courses.component';
-import { CourseTileComponent } from './course-tile';
-import { ToolboxModule } from 'app/shared/components';
+import { routes } from './save-course.routes';
+import { SaveCourseComponent } from './save-course.component';
 import { CourseService } from 'app/services';
 import { SharedModule } from 'app/shared/modules';
-import { SearchPipe } from 'app/pages/courses/pipes';
 
 @NgModule({
     declarations: [
-        CoursesComponent,
-        CourseTileComponent,
-        SearchPipe
+        SaveCourseComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
         routes,
-        ToolboxModule,
         SharedModule
     ],
     providers: [CourseService]
 })
 
-export class CoursesModule {
+export class SaveCourseModule {
 
 }

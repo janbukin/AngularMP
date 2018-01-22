@@ -1,0 +1,24 @@
+<div class="course">
+    <div>
+        <label class="course__label" for="title">Title</label>
+        <input type="text" name="title" [(ngModel)]="course.title" />
+    </div>
+    <div>
+        <label class="course__label" for="description">Description</label>
+        <textarea name="description" [(ngModel)]="course.description" rows="8" cols="70">
+        </textarea>        
+    </div>
+    <div>
+        <label class="course__label" for="date">Date</label>
+        <input type="text" name="date" [ngModel]="course.date | date:'dd/MM/yyyy'" (ngModel)="course.date" />
+    </div>
+    <div>
+        <label class="course__label" for="duration">Duration</label>
+        <input type="text" name="duration" [(ngModel)]="course.duration" />
+        <span class="course__duration">{{course.duration | durationHm}} </span>
+    </div>
+    <div class="course__actions">
+        <button type="button" (click)="save()">Save</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+</div>

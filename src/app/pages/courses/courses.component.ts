@@ -1,6 +1,4 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
 import { CourseService } from 'app/services';
 import { Course } from 'app/shared/models/course.model';
 import { SearchPipe } from './pipes';
@@ -13,7 +11,7 @@ import { OrderByPipe } from 'app/shared/pipes';
     providers: [ SearchPipe ]
   })
   export class CoursesComponent implements OnInit {
-    public courses: Course[] = [];
+    public courses: Course[];
     public filteredCourses: Course[];
     private isLoading: boolean = false;
 
@@ -27,6 +25,10 @@ import { OrderByPipe } from 'app/shared/pipes';
 
     public load(): void {
       this.courses = this.courseService.getAll();
+      // .filter((x: Course) => {
+      //     return x.date.getDate() > (new Date().getDate() - 14);
+      // });
+
       this.filteredCourses = this.courses;
     }
 

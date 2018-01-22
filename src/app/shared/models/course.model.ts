@@ -2,7 +2,7 @@ export interface Course {
     id: number;
     title: string;
     duration: number;
-    createdDate: Date;
+    date: Date;
     description: string;
     topRated: boolean;
 }
