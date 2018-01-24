@@ -5,6 +5,7 @@ import { RequestQuery } from 'app/shared/models/request-query.model';
 import { SearchPipe } from './pipes';
 import { OrderByPipe } from 'app/shared/pipes';
 import { Subscription } from 'rxjs';
+import { Console } from '@angular/core/src/console';
 
 @Component({
     selector: 'courses',
@@ -39,13 +40,14 @@ import { Subscription } from 'rxjs';
 
     public onDelete(id: number): void {
       if (confirm('Do you really want to delete this course?')) {
-        this.courseService.delete(id);
 
-        let deletedCourse = this.courses.find((x: Course) => x.id === id);
-        this.courses = this.courses.filter((c: Course) => c !== deletedCourse);
-        this.filteredCourses = this.filteredCourses.filter((c: Course) => c !== deletedCourse);
-
-        console.log(id + ' is deleted');
+        this.subscription = this.courseService.delete(id)
+          .subscribe((deleted: boolean) => {
+            if (deleted) {
+              console.log(id + ' is deleted');
+              this.load();
+            }
+          });
       }
     }
 

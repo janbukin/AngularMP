@@ -53,27 +53,23 @@ export class CourseService {
     }
 
     public create(course: Course): Course {
-        //this.courses.push(course);
         return course;
     }
 
     public update(newCourse: Course): Observable<Course> {
-        // let oldCourse = this.courses.find((course: Course) => course.id === newCourse.id);
-        // let index = this.courses.indexOf(oldCourse, 0);
-        // if (index > -1) {
-        //     this.courses.splice(index, 1, newCourse);
-        // }
-
         return this.getById(newCourse.id);
     }
 
-    public delete(id: number): boolean {
-        // let courseForDelete = this.courses.find((course: Course) => course.id === id);
-        // let index = this.courses.indexOf(courseForDelete, 0);
-        // if (index > -1) {
-        //     this.courses.splice(index, 1);
-        // }
-        return true;
+    public delete(id: number): Observable<boolean> {
+        let requstOptions = new RequestOptions();
+        let request: Request;
+
+        requstOptions.url = `${this.baseUrl}/courses/${id}`;
+        requstOptions.method = RequestMethod.Delete;
+        request = new Request(requstOptions);
+
+        return this.http.request(request)
+            .map((res: Response) => res.json());
     }
 
     private convertCourse(dto: CourseDto): Course {
