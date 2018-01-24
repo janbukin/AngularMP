@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthorizationService } from 'app/shared/services';
 
 @Component({
@@ -7,9 +8,10 @@ import { AuthorizationService } from 'app/shared/services';
     templateUrl: './login.component.html',
     styleUrls: [ './login.styles.scss' ]
   })
-  export class LoginComponent {
+  export class LoginComponent implements OnDestroy {
     @Input() public userName?: string;
     @Input() public password?: string;
+    public subscription: Subscription;
 
     constructor(
       private authorizationService: AuthorizationService, private router: Router) { }
@@ -19,8 +21,11 @@ import { AuthorizationService } from 'app/shared/services';
         return;
       }
 
-      this.authorizationService.login(this.userName);
-      this.router.navigate(['']);
+      this.subscription = this.authorizationService.login(this.userName, this.password)
+        .subscribe(() => this.router.navigate(['']));
     }
 
+    public ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+    }
   }

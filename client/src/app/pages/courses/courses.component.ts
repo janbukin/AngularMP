@@ -32,10 +32,6 @@ import { Console } from '@angular/core/src/console';
           this.courses = courses;
           this.filteredCourses = courses;
         });
-
-      // .filter((x: Course) => {
-      //     return x.date.getDate() > (new Date().getDate() - 14);
-      // });
     }
 
     public onDelete(id: number): void {

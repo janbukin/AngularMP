@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthorizationService } from 'app/shared/services/authorization/authorization.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'header',
@@ -8,9 +9,10 @@ import { Router } from '@angular/router';
     styleUrls: [ './header.styles.scss' ]
   })
 
-  export class HeaderComponent {
+  export class HeaderComponent implements OnDestroy {
     public userName?: string;
     public isAuthenticated: boolean;
+    public subscription: Subscription;
 
     constructor(private authorizationService: AuthorizationService, private router: Router) {
       this.isAuthenticated = this.authorizationService.isAuthenticated();
@@ -19,7 +21,8 @@ import { Router } from '@angular/router';
         this.router.navigate(['/login']);
       }
 
-      this.userName = this.authorizationService.getUserInfo();
+      this.subscription = this.authorizationService.getUserInfo()
+        .subscribe((login: string) => this.userName = login);
     }
 
     public logout(): void {
@@ -27,6 +30,15 @@ import { Router } from '@angular/router';
     }
 
     public getUserInfo(): string {
-      return this.authorizationService.getUserInfo();
+      let userName: string = '';
+
+      this.subscription = this.authorizationService.getUserInfo()
+        .subscribe((login: string) => userName = login);
+
+      return userName;
+    }
+
+    public ngOnDestroy(): void {
+      this.subscription.unsubscribe();
     }
   }
