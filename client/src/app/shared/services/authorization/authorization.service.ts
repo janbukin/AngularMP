@@ -9,6 +9,7 @@ import {
 } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { UserDto } from 'app/shared/models/user-dto.model';
 
 @Injectable()
@@ -23,19 +24,17 @@ export class AuthorizationService {
 
     public login(login: string, password: string): Observable<void> {
         let requstOptions = new RequestOptions();
-        let request: Request;
 
         requstOptions.url = `${this.baseUrl}/auth/login`;
         requstOptions.method = RequestMethod.Post;
         requstOptions.body = { login, password };
-        request = new Request(requstOptions);
+        let request: Request = new Request(requstOptions);
 
         return this.http.request(request)
             .map((res: Response) => res.json())
             .map((token: string) => {
                 this.storage.setItem(this.key, token);
             });
-            //.catch(this.handleError);
     }
 
     public logout(): void {
@@ -48,20 +47,23 @@ export class AuthorizationService {
 
     public getUserInfo(): Observable<string> {
         let requstOptions = new RequestOptions();
-        let request: Request;
 
         requstOptions.url = `${this.baseUrl}/auth/userinfo`;
-        requstOptions.method = RequestMethod.Get;
-        request = new Request(requstOptions);
+        requstOptions.method = RequestMethod.Post;
+        let request: Request = new Request(requstOptions);
 
         return this.http.request(request)
             .map((res: Response) => res.json())
-            .map((user: UserDto) => user.login);
-            //.catch(this.handleError);
+            .map((user: UserDto) => user.login)
+            .catch(this.handleError);
     }
 
     private handleError(error: Response): Observable<any> {
         console.error('Auth Error occured', error);
-        return Observable.throw(error.text);
+        if (error.status === 401) {
+            return Observable.of('');
+        } else {
+            return Observable.throw(error);
+        }
     }
 }
