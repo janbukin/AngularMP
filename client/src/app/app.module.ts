@@ -32,11 +32,20 @@ import {
 // Services
 import { AuthorizationService } from './shared/services';
 
+// Interceptors
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/services';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  AuthorizationService
+  AuthorizationService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
 ];
 
 type StoreType = {

@@ -41,8 +41,12 @@ export class AuthorizationService {
         this.storage.removeItem(this.key);
     }
 
+    public getToken(): string {
+        return this.storage.getItem(this.key);
+    }
+
     public isAuthenticated(): boolean {
-        return !!this.storage.getItem(this.key);
+        return !!this.getToken();
     }
 
     public getUserInfo(): Observable<string> {
