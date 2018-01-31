@@ -25,7 +25,11 @@ import 'rxjs/add/operator/map';
 
       this.subscription = this.authorizationService.login(this.userName, this.password)
         .subscribe(
-          () => this.router.navigate(['']),
+          (loggedIn: true) => {
+            if (loggedIn) {
+              this.router.navigate(['']);
+            }
+          },
           (error: Response) => this.errorMessage = 'Login or Password is invalid'
           //(error: Response) => error.text().then((res) => this.errorMessage = res)
         );

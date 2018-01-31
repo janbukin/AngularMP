@@ -4,38 +4,38 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'header',
-    templateUrl: './header.component.html',
-    styleUrls: [ './header.styles.scss' ]
-  })
+  selector: 'header',
+  templateUrl: './header.component.html',
+  styleUrls: [ './header.styles.scss' ]
+})
 
-  export class HeaderComponent implements OnInit, OnDestroy {
-    public userName?: string;
-    public isAuthenticated: boolean;
-    public subscription: Subscription;
+export class HeaderComponent implements OnInit, OnDestroy {
+  public userName?: string;
+  public isAuthenticated: boolean;
+  public subscription: Subscription;
 
-    constructor(private authorizationService: AuthorizationService, private router: Router) { }
+  constructor(private authorizationService: AuthorizationService, private router: Router) { }
 
-    public ngOnInit(): void {
-      this.isAuthenticated = this.authorizationService.isAuthenticated();
+  public ngOnInit(): void {
+    this.isAuthenticated = this.authorizationService.isAuthenticated();
 
-      if (!this.isAuthenticated) {
-        this.router.navigate(['/login']);
-      }
-
-      this.userName = this.getUserInfo();
+    if (!this.isAuthenticated) {
+      this.router.navigate(['/login']);
     }
 
-    public logout(): void {
-      this.authorizationService.logout();
-    }
+    this.userName = this.getUserInfo();
+  }
 
-    public getUserInfo(): string {
-      let userName: string = '';
+  public logout(): void {
+    this.authorizationService.logout();
+  }
 
-      console.log('Trying to get user info...');
+  public getUserInfo(): string {
+    let userName: string = '';
 
-      this.subscription = this.authorizationService.getUserInfo()
+    console.log('Trying to get user info...');
+
+    this.subscription = this.authorizationService.getUserInfo()
       .subscribe((login: string) => {
 
         console.log('Login in subscription' + login);
@@ -48,10 +48,10 @@ import { Subscription } from 'rxjs';
         }
       });
 
-      return userName;
-    }
-
-    public ngOnDestroy(): void {
-      this.subscription.unsubscribe();
-    }
+    return userName;
   }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+}

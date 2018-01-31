@@ -7,6 +7,11 @@ import {
     RequestMethod,
     URLSearchParams
 } from '@angular/http';
+// import {
+//     HttpResponse,
+//     HttpRequest,
+//     HttpClient,
+// } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 

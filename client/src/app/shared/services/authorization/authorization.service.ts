@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-    Response,
-    Request,
-    Http,
-    RequestOptions,
-    RequestMethod,
-    URLSearchParams
-} from '@angular/http';
+import { HttpClient, HttpRequest, HttpResponse, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { UserDto } from 'app/shared/models/user-dto.model';
+import { TokenDto } from 'app/shared/models/token-dto.model';
 
 @Injectable()
 export class AuthorizationService {
@@ -18,22 +12,15 @@ export class AuthorizationService {
     private storage = window.localStorage;
     private baseUrl: string;
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
         this.baseUrl = 'http://localhost:3004';
     }
 
-    public login(login: string, password: string): Observable<void> {
-        let requstOptions = new RequestOptions();
-
-        requstOptions.url = `${this.baseUrl}/auth/login`;
-        requstOptions.method = RequestMethod.Post;
-        requstOptions.body = { login, password };
-        let request: Request = new Request(requstOptions);
-
-        return this.http.request(request)
-            .map((res: Response) => res.json())
-            .map((token: string) => {
-                this.storage.setItem(this.key, token);
+    public login(login: string, password: string): Observable<boolean> {
+        return this.http.post<TokenDto>(`${this.baseUrl}/auth/login`, { login, password })
+            .map((res: TokenDto) => {
+                this.storage.setItem(this.key, res.token);
+                return true;
             });
     }
 
@@ -50,15 +37,13 @@ export class AuthorizationService {
     }
 
     public getUserInfo(): Observable<string> {
-        let requstOptions = new RequestOptions();
-
-        requstOptions.url = `${this.baseUrl}/auth/userinfo`;
-        requstOptions.method = RequestMethod.Post;
-        let request: Request = new Request(requstOptions);
+        const request = new HttpRequest(
+            'POST',
+            `${this.baseUrl}/auth/userinfo`,
+            {}
+        );
 
         return this.http.request(request)
-            .map((res: Response) => res.json())
-            .map((user: UserDto) => user.login)
             .catch(this.handleError);
     }
 
