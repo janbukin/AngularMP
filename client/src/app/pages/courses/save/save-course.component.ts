@@ -36,6 +36,10 @@ import { Subscription } from 'rxjs';
         .subscribe((course: Course) => this.course = course);
     }
 
+    public onSubmit(): void {
+      console.log('Save button');
+    }
+
     public save(): void {
       if (typeof this.course.id === 'undefined' || this.course.id === null) {
         this.course = this.courseService.create(this.course);
