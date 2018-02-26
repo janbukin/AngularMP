@@ -11,7 +11,8 @@
       </div>
       <div>
           <label class="course__label" for="date">Date</label>
-          <input type="text" required name="date" [ngModel]="course.date | date:'dd/MM/yyyy'" (ngModel)="course.date" />
+          <!-- <app-date-input formControlName="date"></app-date-input> -->
+          <!-- <input type="text" required name="date" [ngModel]="course.date | date:'dd/MM/yyyy'" (ngModel)="course.date" /> -->
       </div>
       <div>
           <label class="course__label" for="duration">Duration</label>

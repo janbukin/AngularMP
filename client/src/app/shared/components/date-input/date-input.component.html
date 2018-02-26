@@ -1,0 +1,9 @@
+<div class="input__label">Date</div>
+<input
+    [(ngModel)]="value"
+    (change)="onChange()"
+    (keyup)="onChange()"
+    (dblclick)="onDoubleClick()"
+    (blur)="onBlur()"
+    type="text"
+    placeholder="{{ currentDateFormatted }}">
