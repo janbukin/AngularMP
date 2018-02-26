@@ -1,0 +1,10 @@
+<input
+  [(ngModel)]="value"
+  (change)="onChange()"
+  (blur)="onBlur()"
+  (keyup)="onChange()"
+  (keypress)="onKeyPress($event)"
+  (paste)="onPaste($event)"
+  (drop)="onDrop($event)"
+  type="text">
+<div class="course__duration" *ngIf="value != null && value.length > 0 ">{{ value | durationHm }}</div>

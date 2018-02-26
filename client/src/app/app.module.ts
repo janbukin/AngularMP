@@ -28,7 +28,6 @@ import {
   HeaderComponent,
   FooterComponent,
   LogoComponent
-  //DateInputComponent
 } from './shared/components';
 
 // Services
@@ -68,7 +67,6 @@ type StoreType = {
     LogoComponent,
     HeaderComponent,
     FooterComponent
-    //DateInputComponent
   ],
   /**
    * Import Angular's modules.

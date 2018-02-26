@@ -27,7 +27,7 @@ export class DateInputComponent implements ControlValueAccessor {
   public locale: string = 'en-US';
 
   get currentDateFormatted(): string {
-    return new DatePipe(this.locale).transform(new Date(), 'yyyy/MM/dd');
+    return new DatePipe(this.locale).transform(new Date(), 'dd/MM/yyyy');
   }
 
   public constructor() { }
@@ -50,7 +50,7 @@ export class DateInputComponent implements ControlValueAccessor {
   public onTouched: () => any = () => { };
 
   public writeValue(value: Date): void {
-    this.value = new DatePipe(this.locale).transform(value, 'yyyy/MM/dd');
+    this.value = new DatePipe(this.locale).transform(value, 'dd/MM/yyyy');
   }
 
   public registerOnChange(fn: any): void {
