@@ -26,10 +26,12 @@ export class DurationInputComponent implements ControlValueAccessor {
   private previousValue: string;
   private value: string;
 
-  public constructor() { }
+  public constructor() {
+    this.value = '';
+   }
 
   public onChange() {
-    this.sendFromValueUpdate();
+    this.onChangeValue(this.value === '' ? null : +this.value);
   }
 
   public onBlur() {
@@ -38,7 +40,7 @@ export class DurationInputComponent implements ControlValueAccessor {
 
   public onKeyPress(event) {
     const pattern = this.value.length > 0 ? /[0-9]/ : /[1-9]/;
-    if (this.value.length > 2) {
+    if (this.value.length > 3) {
       event.preventDefault();
       return;
     }
@@ -49,27 +51,6 @@ export class DurationInputComponent implements ControlValueAccessor {
     }
   }
 
-  public onPaste(event) {
-    event.preventDefault();
-  }
-
-  public onDrop(event) {
-    event.preventDefault();
-  }
-
-  public onUpClick() {
-    this.value = (+this.value + 1).toString();
-    this.sendFromValueUpdate();
-  }
-
-  public onDownClick() {
-    const number = +this.value;
-    if (number > 0) {
-      this.value = (number - 1).toString();
-    }
-    this.sendFromValueUpdate();
-  }
-
   public registerOnValidatorChange?(fn: () => void): void { }
 
   public onChangeValue: (value: any) => void = () => { };
@@ -77,7 +58,9 @@ export class DurationInputComponent implements ControlValueAccessor {
   public onTouched: () => any = () => { };
 
   public writeValue(value: number): void {
-    this.value = String(value);
+    if (value !== null && typeof(value) !== 'undefined') {
+      this.value = String(value);
+    }
   }
 
   public registerOnChange(fn: any): void {
@@ -89,12 +72,4 @@ export class DurationInputComponent implements ControlValueAccessor {
   }
 
   public setDisabledState?(isDisabled: boolean): void { }
-
-  private sendFromValueUpdate(): void {
-    if (this.previousValue === this.value) {
-      return;
-    }
-    this.previousValue = this.value;
-    this.onChangeValue(this.value === '' ? null : +this.value);
-  }
 }

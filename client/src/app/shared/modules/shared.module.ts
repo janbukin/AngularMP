@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { BorderHighlightDirective } from 'app/shared/directives';
@@ -10,18 +11,19 @@ import { DateInputComponent, DurationInputComponent } from 'app/shared/component
         BorderHighlightDirective,
         DurationPipe,
         OrderByPipe,
-        DateInputComponent
-        //DurationInputComponent
+        DateInputComponent,
+        DurationInputComponent
     ],
     imports: [
-        FormsModule
+        FormsModule,
+        CommonModule
     ],
     exports: [
         BorderHighlightDirective,
         DurationPipe,
         OrderByPipe,
-        DateInputComponent
-        //DurationInputComponent
+        DateInputComponent,
+        DurationInputComponent
     ]
 })
 export class SharedModule {}

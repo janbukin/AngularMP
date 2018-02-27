@@ -23,23 +23,12 @@ import { DatePipe } from '@angular/common';
 })
 export class DateInputComponent implements ControlValueAccessor {
 
-  public value: string;
-  public locale: string = 'en-US';
-
-  get currentDateFormatted(): string {
-    return new DatePipe(this.locale).transform(new Date(), 'dd/MM/yyyy');
-  }
+  private value: string;
+  private locale: string = 'en-US';
 
   public constructor() { }
 
-  public onChange() {
-    this.notifyParent();
-  }
-
-  public onDoubleClick() {
-    this.value = this.currentDateFormatted;
-    this.notifyParent();
-  }
+  public onChange() { }
 
   public onBlur() {
     this.onTouched();
@@ -62,20 +51,4 @@ export class DateInputComponent implements ControlValueAccessor {
   }
 
   public setDisabledState?(isDisabled: boolean): void { }
-
-  private notifyParent() {
-    this.onChangeValue(this.parseDate(this.value));
-  }
-
-  private parseDate(value: string): Date {
-    const pattern = /(1|2)\d\d\d(-|\/)\d\d?(-|\/)(0|1|2|3)\d?/;
-    if (!pattern.test(value)) {
-      return null;
-    }
-    const timestamp = Date.parse(value);
-    if (isNaN(timestamp)) {
-      return null;
-    }
-    return new Date(timestamp);
-  }
 }

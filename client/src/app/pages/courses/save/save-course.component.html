@@ -2,23 +2,46 @@
     <form (ngSubmit)="onSubmit()" #saveCourseForm="ngForm">
       <div>
           <label class="course__label" for="title">Title</label>
-          <input type="text" required name="title" [(ngModel)]="course.title" />
+          <input type="text" #title="ngModel" required name="title" maxlength="50" [(ngModel)]="course.title" />
+          <div class="course__error" *ngIf="title.errors && (title.dirty || title.touched)">
+            <div [hidden]="!title.errors.required">
+              Course title is required.
+            </div>
+            <div [hidden]="!title.errors.maxlength">
+              Course title can not be more than 50 characters long.
+            </div>
+          </div>
       </div>
       <div>
           <label class="course__label" for="description">Description</label>
-          <textarea name="description" [(ngModel)]="course.description" rows="8" cols="70">
+          <textarea #description="ngModel" required name="description" [(ngModel)]="course.description" maxlength="500" rows="8" cols="70">
           </textarea>
+          <div class="course__error" *ngIf="description.errors && (description.dirty || description.touched)">
+              <div [hidden]="!description.errors.required">
+                  Course description is required.
+                </div>
+            <div [hidden]="!description.errors.maxlength">
+              Course description can not be more than 500 characters long.
+            </div>
+          </div>
       </div>
       <div>
           <label class="course__label" for="date">Date</label>
-          <!-- <app-date-input formControlName="date"></app-date-input> -->
-          <input type="text" required name="date" [ngModel]="course.date | date:'dd/MM/yyyy'" (ngModel)="course.date" />
+          <app-date-input required #date="ngModel" name="date" [(ngModel)]="course.date"></app-date-input>
+          <div class="course__error" *ngIf="date.errors && (date.dirty || date.touched)">
+            <div [hidden]="!date.errors.required">
+              Course date is required.
+            </div>
+          </div>
       </div>
       <div>
           <label class="course__label" for="duration">Duration</label>
-          <!-- <app-duration-input formControlName="duration"></app-duration-input> -->
-          <input type="text" required name="duration" [(ngModel)]="course.duration" />
-          <span class="course__duration">{{course.duration | durationHm}} </span>
+          <app-duration-input required #duration="ngModel" name="duration" [(ngModel)]="course.duration"></app-duration-input>
+          <div class="course__error" *ngIf="duration.errors && (duration.dirty || duration.touched)">
+              <div [hidden]="!duration.errors.required">
+                Course duration is required.
+              </div>
+            </div>
       </div>
       <div class="course__actions">
           <button type="submit" [disabled]="!saveCourseForm.form.valid">Save</button>
