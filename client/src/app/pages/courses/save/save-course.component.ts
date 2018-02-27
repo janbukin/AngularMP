@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Course } from 'app/shared/models/course.model';
 import { DurationPipe } from 'app/shared/pipes';
@@ -22,7 +21,10 @@ import { CourseService } from 'app/services';
     ) {}
 
     public ngOnInit() {
-      let id: string = this.route.params['id'];
+      let id: string;
+      this.route.params.subscribe((data) => {
+        id = data['id'];
+      });
 
       if (typeof id === 'undefined' || id === null) {
         this.course = { date: new Date() } as Course;
