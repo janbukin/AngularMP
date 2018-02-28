@@ -27,7 +27,8 @@ import { SaveCourseModule } from './pages/courses/save';
 import {
   HeaderComponent,
   FooterComponent,
-  LogoComponent
+  LogoComponent,
+  BreadcrumbsComponent
 } from './shared/components';
 
 // Services
@@ -68,7 +69,8 @@ type StoreType = {
     NoContentComponent,
     LogoComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbsComponent
   ],
   /**
    * Import Angular's modules.
