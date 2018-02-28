@@ -32,6 +32,7 @@ import {
 
 // Services
 import { AuthorizationService } from './shared/services';
+import { AuthorizationGuard } from './shared/services';
 
 // Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,6 +43,7 @@ const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthorizationService,
+  AuthorizationGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
@@ -78,7 +80,7 @@ type StoreType = {
     HttpModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, {
-      useHash: Boolean(history.pushState) === false,
+      useHash: Boolean(history.pushState) === true,
       preloadingStrategy: PreloadAllModules
     }),
     CoursesModule,

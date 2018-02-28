@@ -17,6 +17,6 @@ import { Course } from 'app/shared/models/course.model';
     }
 
     public add() {
-      this.router.navigate(['/course']);
+      this.router.navigate(['/courses/new']);
     }
   }

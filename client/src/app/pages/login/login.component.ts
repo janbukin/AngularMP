@@ -19,7 +19,8 @@ import 'rxjs/add/operator/map';
       private authorizationService: AuthorizationService, private router: Router) { }
 
     public login(): void {
-      if (!this.userName) {
+      console.log('Login()');
+      if (!this.userName || !this.password) {
         return;
       }
 

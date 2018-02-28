@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { routes } from './courses.routes';
 import { CoursesComponent } from './courses.component';
 import { CourseTileComponent } from './course-tile';
 import { ToolboxModule } from 'app/shared/components';
@@ -19,7 +18,6 @@ import { SearchPipe } from 'app/pages/courses/pipes';
     imports: [
         CommonModule,
         FormsModule,
-        routes,
         ToolboxModule,
         SharedModule
     ],
