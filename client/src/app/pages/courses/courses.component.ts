@@ -45,8 +45,8 @@ import { CoursesState, getCourses } from './store/courses.reducer';
     }
 
     public onSearch(query: string): void {
-      //this.filteredCourses = this.searchPipe.transform(this.courses, query);
-      this.store.dispatch(new CoursesActions.ChangeFilter(query));
+      this.filteredCourses = this.searchPipe.transform(this.courses, query);
+      //this.store.dispatch(new CoursesActions.ChangeFilter(query));
     }
 
     public ngOnDestroy(): void {
