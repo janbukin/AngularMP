@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -88,7 +89,9 @@ type StoreType = {
     CoursesModule,
     LoginModule,
     SaveCourseModule,
-
+    StoreDevtoolsModule.instrument({
+      maxAge: 5
+    }),
     ...environment.showDevModule ? [] : [],
   ],
   /**
