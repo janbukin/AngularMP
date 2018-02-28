@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 /*
@@ -39,6 +41,8 @@ import { AuthorizationGuard } from './shared/services';
 // Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/services';
+import { CoursesReducer } from 'app/pages/courses/store';
+import { CoursesEffects } from 'app/pages/courses/store';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -89,9 +93,14 @@ type StoreType = {
     CoursesModule,
     LoginModule,
     SaveCourseModule,
+    StoreModule.forRoot(
+    {
+      courses: CoursesReducer
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 5
     }),
+    EffectsModule.forRoot([CoursesEffects]),
     ...environment.showDevModule ? [] : [],
   ],
   /**
