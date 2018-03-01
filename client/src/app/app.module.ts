@@ -43,6 +43,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/services';
 import { CoursesReducer } from 'app/pages/courses/store';
 import { CoursesEffects } from 'app/pages/courses/store';
+import { CourseReducer } from 'app/pages/courses/store/course.reducer';
+import { CourseEffects } from 'app/pages/courses/store/course.effects';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -95,12 +97,13 @@ type StoreType = {
     SaveCourseModule,
     StoreModule.forRoot(
     {
+      course: CourseReducer,
       courses: CoursesReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 5
     }),
-    EffectsModule.forRoot([CoursesEffects]),
+    EffectsModule.forRoot([ CourseEffects, CoursesEffects]),
     ...environment.showDevModule ? [] : [],
   ],
   /**

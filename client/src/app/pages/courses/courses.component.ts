@@ -10,7 +10,7 @@ import { RequestQuery } from 'app/shared/models/request-query.model';
 import { SearchPipe } from './pipes';
 import { OrderByPipe } from 'app/shared/pipes';
 import * as CoursesActions from './store';
-import { CoursesState, getCourses } from './store/courses.reducer';
+import { CoursesState, getCourses, getCoursesSearch } from './store/courses.reducer';
 
 @Component({
     selector: 'courses',
@@ -27,10 +27,10 @@ import { CoursesState, getCourses } from './store/courses.reducer';
     constructor(private searchPipe: SearchPipe, private store: Store<any>) {
       this.coursesState = this.store.select((state: any) => state.courses);
       this.store.select(getCourses)
-      .subscribe((courses: Course[]) => {
-        this.courses = courses;
-        this.filteredCourses = courses;
-      });
+        .subscribe((courses: Course[]) => {
+          this.courses = courses;
+          this.filteredCourses = courses;
+        });
     }
 
     public ngOnInit() {

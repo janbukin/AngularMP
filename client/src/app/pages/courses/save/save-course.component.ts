@@ -1,9 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+
 import { Course } from 'app/shared/models/course.model';
 import { DurationPipe } from 'app/shared/pipes';
 import { CourseService } from 'app/services';
+import * as CourseActions from '../store/course.actions';
+import { getCourse, CourseState } from '../store/course.reducer';
 
 @Component({
     selector: 'save-course',
@@ -13,11 +18,12 @@ import { CourseService } from 'app/services';
   export class SaveCourseComponent implements OnInit, OnDestroy {
     public course: Course = {} as Course;
     public subscription: Subscription;
+    private courseState: Observable<CourseState>;
 
     constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private courseService: CourseService
+      private store: Store<any>
     ) { }
 
     public ngOnInit() {
@@ -34,8 +40,10 @@ import { CourseService } from 'app/services';
     }
 
     public load(id: number): void {
-      this.subscription = this.courseService.getById(id)
-        .subscribe((course: Course) => this.course = course);
+      this.store.dispatch(new CourseActions.GetCourseRequest(id));
+      this.store.select(getCourse).subscribe((course: Course) => {
+        this.course = course;
+      });
     }
 
     public onSubmit(): void {
@@ -44,10 +52,9 @@ import { CourseService } from 'app/services';
 
     public save(): void {
       if (typeof this.course.id === 'undefined' || this.course.id === null) {
-        this.subscription = this.courseService.create(this.course)
-          .subscribe((course: Course) => this.course = course);
+        this.store.dispatch(new CourseActions.UpdateCourseRequest(this.course));
       } else {
-        this.courseService.update(this.course);
+        this.store.dispatch(new CourseActions.CreateCourseRequest(this.course));
       }
 
       this.router.navigate(['/courses']);

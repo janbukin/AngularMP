@@ -9,7 +9,7 @@ export interface CourseState {
 }
 
 export const defaultCourseState: CourseState = {
-  course: null,
+  course: {} as Course,
 };
 
 const newState = (state, newData) => {
