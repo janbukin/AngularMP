@@ -44,7 +44,8 @@ import { CourseService } from 'app/services';
 
     public save(): void {
       if (typeof this.course.id === 'undefined' || this.course.id === null) {
-        this.course = this.courseService.create(this.course);
+        this.subscription = this.courseService.create(this.course)
+          .subscribe((course: Course) => this.course = course);
       } else {
         this.courseService.update(this.course);
       }
