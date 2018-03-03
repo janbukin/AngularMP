@@ -22,6 +22,6 @@ import { DurationPipe } from 'app/shared/pipes';
       }
 
     public edit(): void {
-        this.router.navigate(['/course', this.course.id]);
+        this.router.navigate(['/courses', this.course.id]);
     }
   }

@@ -27,11 +27,13 @@ import { SaveCourseModule } from './pages/courses/save';
 import {
   HeaderComponent,
   FooterComponent,
-  LogoComponent
+  LogoComponent,
+  BreadcrumbsComponent
 } from './shared/components';
 
 // Services
 import { AuthorizationService } from './shared/services';
+import { AuthorizationGuard } from './shared/services';
 
 // Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,6 +44,7 @@ const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthorizationService,
+  AuthorizationGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
@@ -66,7 +69,8 @@ type StoreType = {
     NoContentComponent,
     LogoComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbsComponent
   ],
   /**
    * Import Angular's modules.
@@ -78,7 +82,7 @@ type StoreType = {
     HttpModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, {
-      useHash: Boolean(history.pushState) === false,
+      useHash: true,
       preloadingStrategy: PreloadAllModules
     }),
     CoursesModule,

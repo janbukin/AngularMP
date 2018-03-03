@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Course } from 'app/shared/models/course.model';
 import { DurationPipe } from 'app/shared/pipes';
@@ -12,24 +11,26 @@ import { CourseService } from 'app/services';
     styleUrls: [ './save-course.styles.scss' ]
   })
   export class SaveCourseComponent implements OnInit, OnDestroy {
-    public course: Course;
+    public course: Course = {} as Course;
     public subscription: Subscription;
 
     constructor(
       private route: ActivatedRoute,
       private router: Router,
       private courseService: CourseService
-    ) {}
+    ) { }
 
     public ngOnInit() {
-      let id: string = this.route.params['id'];
+      let id: string;
+      this.route.params.subscribe((data) => {
+        id = data['id'];
 
-      if (typeof id === 'undefined' || id === null) {
-        this.course = { date: new Date() } as Course;
-        console.log('initialization of course');
-      } else {
-        this.load(+id);
-      }
+        if (typeof id === 'undefined' || id === null) {
+          this.course.date = new Date();
+        } else {
+          this.load(+id);
+        }
+      });
     }
 
     public load(id: number): void {
@@ -38,13 +39,12 @@ import { CourseService } from 'app/services';
     }
 
     public onSubmit(): void {
-      console.log('Save button');
+      this.save();
     }
 
     public save(): void {
       if (typeof this.course.id === 'undefined' || this.course.id === null) {
         this.course = this.courseService.create(this.course);
-        console.log('new course is created');
       } else {
         this.courseService.update(this.course);
       }
@@ -57,6 +57,8 @@ import { CourseService } from 'app/services';
     }
 
     public ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+      if (typeof this.subscription !== 'undefined' && this.subscription !== null) {
+        this.subscription.unsubscribe();
+      }
     }
   }
