@@ -89,7 +89,7 @@ type StoreType = {
     HttpModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, {
-      useHash: Boolean(history.pushState) === true,
+      useHash: true,
       preloadingStrategy: PreloadAllModules
     }),
     CoursesModule,

@@ -30,13 +30,13 @@ import { getCourse, CourseState } from '../store/course.reducer';
       let id: string;
       this.route.params.subscribe((data) => {
         id = data['id'];
-      });
 
-      if (typeof id === 'undefined' || id === null) {
-        this.course.date = new Date();
-      } else {
-        this.load(+id);
-      }
+        if (typeof id === 'undefined' || id === null) {
+          this.course.date = new Date();
+        } else {
+          this.load(+id);
+        }
+      });
     }
 
     public load(id: number): void {
