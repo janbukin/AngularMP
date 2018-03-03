@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+//import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Course } from 'app/shared/models/course.model';
 import { DurationPipe } from 'app/shared/pipes';
 import { CourseService } from 'app/services';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'save-course',
@@ -34,6 +35,10 @@ import { Subscription } from 'rxjs';
     public load(id: number): void {
       this.subscription = this.courseService.getById(id)
         .subscribe((course: Course) => this.course = course);
+    }
+
+    public onSubmit(): void {
+      console.log('Save button');
     }
 
     public save(): void {

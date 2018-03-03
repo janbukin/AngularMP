@@ -27,7 +27,7 @@ import { SaveCourseModule } from './pages/courses/save';
 import {
   HeaderComponent,
   FooterComponent,
-  LogoComponent,
+  LogoComponent
 } from './shared/components';
 
 // Services
