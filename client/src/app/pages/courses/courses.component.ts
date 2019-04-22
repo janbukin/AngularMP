@@ -1,11 +1,16 @@
 import { Component, Input, Output, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Console } from '@angular/core/src/console';
+import { Store } from '@ngrx/store';
+
 import { CourseService } from 'app/services';
 import { Course } from 'app/shared/models/course.model';
 import { RequestQuery } from 'app/shared/models/request-query.model';
 import { SearchPipe } from './pipes';
 import { OrderByPipe } from 'app/shared/pipes';
-import { Subscription } from 'rxjs';
-import { Console } from '@angular/core/src/console';
+import * as CoursesActions from './store';
+import { CoursesState, getCourses, getCoursesSearch } from './store/courses.reducer';
 
 @Component({
     selector: 'courses',
@@ -17,41 +22,36 @@ import { Console } from '@angular/core/src/console';
     public courses: Course[] = [];
     public filteredCourses: Course[] = [];
     public subscription: Subscription;
-    private isLoading: boolean = false;
+    private coursesState: Observable<CoursesState>;
 
-    constructor(private courseService: CourseService, private searchPipe: SearchPipe) {}
-
-    public ngOnInit() {
-      this.load();
-    }
-
-    public load(): void {
-      let query: RequestQuery = { start: 0, count: 10, sort: '' };
-      this.subscription = this.courseService.getAll(query)
+    constructor(private searchPipe: SearchPipe, private store: Store<any>) {
+      this.coursesState = this.store.select((state: any) => state.courses);
+      this.store.select(getCourses)
         .subscribe((courses: Course[]) => {
           this.courses = courses;
           this.filteredCourses = courses;
         });
     }
 
+    public ngOnInit() {
+      this.store.dispatch(new CoursesActions.GetCoursesRequest());
+    }
+
     public onDelete(id: number): void {
       if (confirm('Do you really want to delete this course?')) {
-
-        this.subscription = this.courseService.delete(id)
-          .subscribe((deleted: boolean) => {
-            if (deleted) {
-              console.log(id + ' is deleted');
-              this.load();
-            }
-          });
+        this.store.dispatch(new CoursesActions.DeleteCourseRequest(id));
+        this.store.dispatch(new CoursesActions.GetCoursesRequest());
       }
     }
 
     public onSearch(query: string): void {
       this.filteredCourses = this.searchPipe.transform(this.courses, query);
+      //this.store.dispatch(new CoursesActions.ChangeFilter(query));
     }
 
     public ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+      if (typeof this.subscription !== 'undefined' && this.subscription !== null) {
+        this.subscription.unsubscribe();
+      }
     }
   }
